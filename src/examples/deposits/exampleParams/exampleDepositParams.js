@@ -5,8 +5,8 @@ module.exports = {
   depositParams: {
     blockchain: 'neo',
     address: user.address,
-    assetID: 'ab38352559b8b203bde5fddfa0b07d8b2525e132',
-    amount: (1).toFixed(8),
+    assetID: 'SWTH',
+    amount: (toNeoAssetAmount(1)),
     privateKey: user.privateKey
   }
 }
