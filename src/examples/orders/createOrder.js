@@ -6,12 +6,12 @@ function createOrder({ pair, blockchain, address, side, price,
                        wantAmount, useNativeTokens, orderType,
                        privateKey }) {
   const contractHash = CONTRACT_HASH
-  const signableParams = { pair, blockchain, contractHash: CONTRACT_HASH,
-                           side, price, wantAmount, useNativeTokens,
-                           orderType, timestamp: getTimestamp() }
+  const signableParams = { pair, blockchain, side, price, wantAmount,
+                           useNativeTokens, orderType, timestamp: getTimestamp(),
+                           contractHash: CONTRACT_HASH }
 
   const signature = signParams(signableParams, privateKey)
-  const apiParams = { ...signableParams, signature, address }
+  const apiParams = { ...signableParams, address, signature }
   return api.post(API_URL + '/orders', apiParams)
 }
 
