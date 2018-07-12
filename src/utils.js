@@ -33,9 +33,16 @@ function stringifyParams(params) {
   return stringify(snakeCaseParams)
 }
 
+function mapPairToUrlParam(key, value) {
+  if (Array.isArray(value)) {
+    return value.map((v) => `${key}[]=${value}`).join('&')
+  }
+  return `${key}=${value}`
+}
+
 function convertHashToUrlParams(params) {
   const snakeCaseParams = convertKeysToSnakeCase(params)
-  return Object.keys(snakeCaseParams).map(key => key + '=' + params[key]).join('&');
+  return Object.keys(snakeCaseParams).map(key => mapPairToUrlParam(key, snakeCaseParams[key])).join('&');
 }
 
 function signParams(params, privateKey) {
