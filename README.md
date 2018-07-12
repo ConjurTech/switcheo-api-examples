@@ -1,0 +1,1 @@
+# switcheo-api-examples
