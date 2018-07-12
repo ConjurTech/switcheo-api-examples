@@ -1,0 +1,12 @@
+{
+  "name": "switcheo-api-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@cityofzion/neon-js": "^3.9.2",
+    "json-stable-stringify": "^1.0.1",
+    "lodash": "^4.17.10",
+    "unirest": "^0.5.1"
+  }
+}
