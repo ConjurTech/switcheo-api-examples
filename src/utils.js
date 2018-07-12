@@ -70,5 +70,6 @@ module.exports = {
   stringifyParams,
   convertHashToUrlParams,
   getTimestamp,
-  toNeoAssetAmount
+  toNeoAssetAmount,
+  signMessage,
 }
