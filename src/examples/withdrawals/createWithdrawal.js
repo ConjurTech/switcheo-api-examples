@@ -7,6 +7,6 @@ function createWithdrawal ({ blockchain, address, assetID, amount, privateKey })
   const signature = signParams(signableParams, privateKey,)
   const apiParams = { ...signableParams, address, signature }
   return api.post(API_URL + '/withdrawals', apiParams)
-};
+}
 
 module.exports = { createWithdrawal }

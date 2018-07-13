@@ -1,5 +1,5 @@
 const { createWithdrawal } = require('./createWithdrawal')
-const { broadcastWithdrawal } = require('./broadcastWithdrawal')
+const { executeWithdrawal } = require('./executeWithdrawal')
 const { withdrawalParams } = require('./exampleParams/exampleWithdrawalParams')
 
 createWithdrawal(withdrawalParams).then((response) => {
@@ -7,8 +7,8 @@ createWithdrawal(withdrawalParams).then((response) => {
   console.log('createWithdrawal')
   console.log(withdrawal)
 
-  broadcastWithdrawal({ withdrawal, privateKey: withdrawalParams.privateKey }).then((response) => {
-    console.log('broadcastWithdrawal')
+  executeWithdrawal({ withdrawal, privateKey: withdrawalParams.privateKey }).then((response) => {
+    console.log('executeWithdrawal')
     console.log(response.body)
   })
 })

@@ -1,5 +1,5 @@
 const { createDeposit } = require('./createDeposit')
-const { broadcastDeposit } = require('./broadcastDeposit')
+const { executeDeposit } = require('./executeDeposit')
 const { depositParams } = require('./exampleParams/exampleDepositParams')
 
 createDeposit(depositParams).then((response) => {
@@ -7,8 +7,8 @@ createDeposit(depositParams).then((response) => {
   console.log('createDeposit')
   console.log(deposit)
 
-  broadcastDeposit({ deposit, privateKey: depositParams.privateKey }).then((response) => {
-    console.log('broadcastDeposit')
+  executeDeposit({ deposit, privateKey: depositParams.privateKey }).then((response) => {
+    console.log('executeDeposit')
     console.log(response.body)
   })
 })

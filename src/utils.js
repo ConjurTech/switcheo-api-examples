@@ -42,7 +42,7 @@ function mapPairToUrlParam(key, value) {
 
 function convertHashToUrlParams(params) {
   const snakeCaseParams = convertKeysToSnakeCase(params)
-  return Object.keys(snakeCaseParams).map(key => mapPairToUrlParam(key, snakeCaseParams[key])).join('&');
+  return Object.keys(snakeCaseParams).map(key => mapPairToUrlParam(key, snakeCaseParams[key])).join('&')
 }
 
 function signParams(params, privateKey) {
