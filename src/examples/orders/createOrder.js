@@ -5,7 +5,6 @@ const api = require('../../api')
 function createOrder({ pair, blockchain, side, price,
                        wantAmount, useNativeTokens, orderType,
                        privateKey, address }) {
-  const contractHash = CONTRACT_HASH
   const signableParams = { pair, blockchain, side, price, wantAmount,
                            useNativeTokens, orderType, timestamp: getTimestamp(),
                            contractHash: CONTRACT_HASH }

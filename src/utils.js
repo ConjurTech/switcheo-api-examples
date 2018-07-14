@@ -72,4 +72,5 @@ module.exports = {
   getTimestamp,
   toNeoAssetAmount,
   signMessage,
+  convertKeysToSnakeCase
 }

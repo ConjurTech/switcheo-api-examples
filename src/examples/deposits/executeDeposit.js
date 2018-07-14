@@ -3,11 +3,9 @@ const { API_URL } = require('../../config')
 const api = require('../../api')
 
 function executeDeposit ({ deposit, privateKey }) {
-    const { id, transaction: depositTxn } = deposit
-    console.log(depositTxn)
-    const signature = signTransaction(depositTxn, privateKey)
-    const url = `${API_URL}/deposits/${id}/broadcast`
-    return api.post(url, { signature })
+  const signature = signTransaction(deposit.transaction, privateKey)
+  const url = `${API_URL}/deposits/${deposit.id}/broadcast`
+  return api.post(url, { signature })
 }
 
 module.exports = { executeDeposit }
