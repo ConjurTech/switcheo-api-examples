@@ -18,8 +18,8 @@ function encodeMessage(message) {
 }
 
 function signTransaction(transaction, privateKey) {
-  const txnSerialized = tx.serializeTransaction(transaction, false)
-  return signMessage(txnSerialized, privateKey)
+  const serializedTxn = tx.serializeTransaction(transaction, false)
+  return signMessage(serializedTxn, privateKey)
 }
 
 function convertKeysToSnakeCase(obj) {
