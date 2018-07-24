@@ -3,6 +3,7 @@ const Neon = require('@cityofzion/neon-js')
 const { wallet, tx } = require('@cityofzion/neon-js')
 const { mapKeys, snakeCase } = require('lodash')
 const { BigNumber } = require('bignumber.js')
+const ASSETS = require('./assets')
 
 const NEO_ASSET_PRECISION = 8
 
@@ -40,7 +41,7 @@ function mapPairToUrlParam(key, value) {
   return `${key}=${value}`
 }
 
-function convertHashToUrlParams(params) {
+function convertHashToUrlParams(params = {}) {
   const snakeCaseParams = convertKeysToSnakeCase(params)
   return Object.keys(snakeCaseParams).map(key => mapPairToUrlParam(key, snakeCaseParams[key])).join('&')
 }
@@ -64,6 +65,17 @@ function toNeoAssetAmount(value) {
   return bigNumber.times(assetMultiplier).toFixed(0)
 }
 
+function concatArrays(arrays) {
+  return arrays.reduce((accumulator, array) => {
+    return accumulator.concat(array)
+  }, [])
+}
+
+function getAssetId(assetId) {
+  console.log('ASSETS', ASSETS)
+  return ASSETS[assetId]
+}
+
 module.exports = {
   signTransaction,
   signParams,
@@ -72,5 +84,7 @@ module.exports = {
   getTimestamp,
   toNeoAssetAmount,
   signMessage,
-  convertKeysToSnakeCase
+  convertKeysToSnakeCase,
+  concatArrays,
+  getAssetId
 }

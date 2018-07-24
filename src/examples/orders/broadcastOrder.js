@@ -10,7 +10,6 @@ function signArray(array, privateKey) {
 }
 
 function broadcastOrder({ order, privateKey }) {
-  const { fills, makes } = order
   const signatures = {
     fills: signArray(order.fills, privateKey),
     makes: signArray(order.makes, privateKey)
