@@ -7,7 +7,7 @@ module.exports = {
     blockchain: 'neo',
     address: user.address,
     side: 'buy',
-    price: (0.001).toFixed(8),
+    price: (0.00001).toFixed(8),
     wantAmount: toNeoAssetAmount(20.5),
     useNativeTokens: true,
     orderType: 'limit',
