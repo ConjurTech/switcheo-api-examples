@@ -35,7 +35,7 @@ function stringifyParams(params) {
 
 function mapPairToUrlParam(key, value) {
   if (Array.isArray(value)) {
-    return value.map((v) => `${key}[]=${value}`).join('&')
+    return value.map((v) => `${key}[]=${v}`).join('&')
   }
   return `${key}=${value}`
 }
