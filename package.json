@@ -5,9 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "@cityofzion/neon-js": "^3.9.2",
+    "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "json-stable-stringify": "^1.0.1",
-    "lodash": "^4.17.10",
-    "unirest": "^0.5.1"
+    "lodash": "^4.17.10"
   }
 }

@@ -1,25 +1,31 @@
-const unirest = require('unirest')
+const axios = require('axios')
 const { stringifyParams, convertHashToUrlParams } = require('./utils')
 
 function handleResponse(response, resolve) {
-  if (response.error) { console.log(response.error) }
-  resolve(response)
+  if (response.status === 200) {
+    response.body = response.data
+    resolve(response)
+  }
 }
 
 function get(url, params) {
   return new Promise((resolve) => {
     const paramsString = convertHashToUrlParams(params)
-    unirest.get(url + '?' + paramsString)
-           .end(response => handleResponse(response, resolve))
+    axios.get(url + '?' + paramsString)
+        .then(response => handleResponse(response, resolve))
+        .catch(error => console.log(error.response))
   })
 }
 
 function post(url, params) {
   return new Promise((resolve) => {
-    unirest.post(url)
-           .headers({ 'Content-Type': 'application/json' })
-           .send(stringifyParams(params))
-           .end(response => handleResponse(response, resolve))
+    return axios.post(url, stringifyParams(params), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => handleResponse(response, resolve))
+    .catch(error => console.log(error.response))
   })
 }
 
