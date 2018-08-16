@@ -1,5 +1,5 @@
 const user = require('../../../user')
-const { toNeoAssetAmount } = require('../../../utils')
+const { toAssetAmount } = require('../../../utils')
 
 module.exports = {
   orderParams: {
@@ -8,7 +8,8 @@ module.exports = {
     address: user.address,
     side: 'buy',
     price: (0.0001).toFixed(8),
-    wantAmount: toNeoAssetAmount(200.5),
+    // the amount of SWTH to sell or buy
+    wantAmount: toAssetAmount(200.5, 'SWTH'),
     useNativeTokens: true,
     orderType: 'limit',
     privateKey: user.privateKey

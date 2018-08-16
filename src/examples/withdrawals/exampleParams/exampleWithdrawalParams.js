@@ -1,12 +1,12 @@
 const user = require('../../../user')
-const { toNeoAssetAmount } = require('../../../utils')
+const { toAssetAmount } = require('../../../utils')
 
 module.exports = {
   withdrawalParams: {
     blockchain: 'neo',
     address: user.address,
     assetID: 'SWTH',
-    amount: (toNeoAssetAmount(1)),
+    amount: toAssetAmount(1, 'SWTH'),
     privateKey: user.privateKey
   }
 }

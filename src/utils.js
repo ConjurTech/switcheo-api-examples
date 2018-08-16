@@ -3,8 +3,7 @@ const Neon = require('@cityofzion/neon-js')
 const { wallet, tx } = require('@cityofzion/neon-js')
 const { mapKeys, snakeCase } = require('lodash')
 const { BigNumber } = require('bignumber.js')
-
-const NEO_ASSET_PRECISION = 8
+const { ASSET_DECIMALS } = require('./assets')
 
 function signMessage(message, privateKey) {
   return wallet.generateSignature(message, privateKey)
@@ -58,9 +57,10 @@ function getTimestamp() {
   return new Date().getTime()
 }
 
-function toNeoAssetAmount(value) {
+function toAssetAmount(value, assetSymbol) {
   const bigNumber = new BigNumber(value)
-  const assetMultiplier = Math.pow(10, NEO_ASSET_PRECISION)
+  const assetPrecision = ASSET_DECIMALS[assetSymbol]
+  const assetMultiplier = Math.pow(10, assetPrecision)
   return bigNumber.times(assetMultiplier).toFixed(0)
 }
 
@@ -70,7 +70,7 @@ module.exports = {
   stringifyParams,
   convertHashToUrlParams,
   getTimestamp,
-  toNeoAssetAmount,
+  toAssetAmount,
   signMessage,
   convertKeysToSnakeCase
 }
