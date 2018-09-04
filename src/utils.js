@@ -1,6 +1,5 @@
 const stringify = require('json-stable-stringify')
-const Neon = require('@cityofzion/neon-js')
-const { wallet, tx } = require('@cityofzion/neon-js')
+const { u, wallet, tx } = require('@cityofzion/neon-js')
 const { mapKeys, snakeCase } = require('lodash')
 const { BigNumber } = require('bignumber.js')
 const { ASSET_DECIMALS } = require('./assets')
@@ -10,8 +9,8 @@ function signMessage(message, privateKey) {
 }
 
 function encodeMessage(message) {
-  const messageHex = Neon.u.str2hexstring(message)
-  const messageLengthHex = (messageHex.length / 2).toString(16).padStart(2, '0')
+  const messageHex = u.str2hexstring(message)
+  const messageLengthHex = u.num2VarInt(messageHex.length / 2)
   const encodedMessage = `010001f0${messageLengthHex}${messageHex}0000`
   return encodedMessage
 }
