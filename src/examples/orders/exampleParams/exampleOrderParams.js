@@ -8,7 +8,8 @@ module.exports = {
     address: user.address,
     side: 'buy',
     price: (0.0001).toFixed(8),
-    // the amount of SWTH to sell or buy
+  // if the side is 'buy', then this is the amount of SWTH you want
+  // if the side is 'sell' then this is the amount of NEO you want
     wantAmount: toAssetAmount(200.5, 'SWTH'),
     useNativeTokens: true,
     orderType: 'limit',
